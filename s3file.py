@@ -19,3 +19,21 @@ bucket.upload_fileobj(data, 'mykey')
 
 #same, you can use resource or client
 s3.upload_fileobj(data, 'mybucket', 'mykey')
+
+#the bucket exit by name
+try:
+    response = client.head_bucket(
+        Bucket='bucketname'
+    )
+except NoSuchBucket:
+    pass
+
+#the bucket exit by key
+try:
+    response = client.head_object(
+        Bucket='bucketname',
+        Key = 'mykey'
+    )
+except NoSuchKey:
+    pass
+
